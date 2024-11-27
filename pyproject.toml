@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "top-streamers-weekly"
+version = "0.1.0"
+description = "A project for generating/creating weekly reports revolving around the \"top streamers\""
+authors = ["Simon Roadknight <s.roadknight96@gmail.com>"]
+license = "Unlicense license"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.32.3"
+pandas = "^2.2.3"
+plotly = "^5.24.1"
+pyiceberg = {extras = ["glue"], version = "^0.7.1"}
+python-dotenv = "^1.0.1"
+pyspark = "^3.5.3"
+setuptools = "^75.3.0"
+pyarrow = "^18.0.0"
+pydantic = "^2.10.2"
+pydantic-settings = "^2.6.1"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+apache-airflow = {version = "^2.10.3", markers = "python_version < '3.13'"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.plugins.dotenv]
+ignore = "false"
+location = ".env"
