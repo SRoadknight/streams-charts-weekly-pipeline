@@ -1,6 +1,6 @@
 from typing import Literal
 import boto3
-
+import os
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class CustomBaseSettings(BaseSettings):
@@ -35,15 +35,15 @@ class Config(CustomBaseSettings):
     def s3_prefix(self) -> str:
         return "weekly_streamers_data"
     
+    @property
+    def aws_profile_available(self) -> bool:
+        return self.AWS_PROFILE and self.AWS_PROFILE in boto3.Session().available_profiles  
+    
     def get_aws_session(self) -> boto3.Session:
-        if self.AWS_PROFILE:
-            return boto3.Session(profile_name=self.AWS_PROFILE)
-        else:
-            return boto3.Session(
-                aws_access_key_id=self.AWS_ACCESS_KEY_ID,
-                aws_secret_access_key=self.AWS_SECRET_ACCESS_KEY,
-                region_name=self.AWS_REGION
-            )
-
+        return boto3.Session(
+            aws_access_key_id=self.AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=self.AWS_SECRET_ACCESS_KEY,
+            region_name=self.AWS_REGION
+        )
 
 settings = Config()

@@ -166,3 +166,13 @@ cython_debug/
 *.tfstate.*
 terraform.output.*.json
 .terraform/
+
+# Mage AI
+.file_versions/
+.mage_data/
+__pycache__/
+.DS_Store
+
+# SSH 
+.ssh/
+.sshtunnel/

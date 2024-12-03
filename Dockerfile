@@ -1,22 +1,35 @@
-FROM apache/airflow:latest-python3.12
-
-USER root
+FROM python:3.12-slim
 
 # Install system dependencies
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
-    && apt-get clean \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
-USER airflow
+# Install poetry
+RUN pip install poetry
 
-# Copy requirements
-COPY requirements.txt /opt/airflow/requirements.txt
+WORKDIR /app
 
-# Install Python dependencies
-RUN pip install --no-cache-dir -r /opt/airflow/requirements.txt
+# Copy dependency files only
+COPY pyproject.toml poetry.lock ./
 
-# Copy your project files
-COPY dags/ /opt/airflow/dags/
-COPY scripts/ /opt/airflow/scripts/
+# Install dependencies using poetry
+# Disable virtualenv creation as we're in a container
+RUN poetry config virtualenvs.create false \
+    && poetry install --no-interaction --no-ansi
+
+# Create necessary directories
+RUN mkdir -p .file_versions && \
+    chmod -R 777 .file_versions
+
+# Copy entrypoint script and set permissions
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+# Copy the rest of the application
+COPY . .
+
+EXPOSE 6789
+
+ENTRYPOINT ["/app/entrypoint.sh"]

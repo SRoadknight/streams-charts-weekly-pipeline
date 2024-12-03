@@ -1,0 +1,12 @@
+services:
+  mage:
+    build: .
+    ports:
+      - "6789:6789"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    environment:
+      - POETRY_VIRTUALENVS_CREATE=false
+      - RUN_MODE=${RUN_MODE:-}

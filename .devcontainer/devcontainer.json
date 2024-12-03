@@ -1,0 +1,38 @@
+{
+    "name": "Top Streamers Weekly",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "mage",
+    "workspaceFolder": "/app",
+    
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "anysphere.pyright",
+                "charliermarsh.ruff",
+                "eamodio.gitlens",
+                "matangover.mypy",
+                "mechatroner.rainbow-csv",
+                "ms-azuretools.vscode-docker",
+                "ms-python.debugpy",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-toolsai.jupyter",
+                "ms-toolsai.jupyter-keymap",
+                "ms-toolsai.jupyter-renderers",
+                "ms-toolsai.vscode-jupyter-cell-tags",
+                "ms-toolsai.vscode-jupyter-slideshow",
+                "rangav.vscode-thunder-client",
+                "xdebug.php-debug"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.analysis.extraPaths": ["/app"],
+                "editor.formatOnSave": true,
+                "python.formatting.provider": "black",
+                "python.linting.enabled": true,
+                "python.linting.pylintEnabled": true
+            }
+        }
+    },
+
+}

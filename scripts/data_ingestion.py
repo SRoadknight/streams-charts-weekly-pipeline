@@ -10,10 +10,9 @@ def ingest_streams_data():
         url = "https://streamscharts.com/api/jazz/channels?platform=twitch&time=7-days"
         headers = {
             "Client-ID": settings.STREAMS_CHARTS_CLIENT_ID,
-            "Token": settings.STREAMS_CHARTS_TOKEN
+            "Token": settings.STREAMS_CHARTS_TOKEN.strip("'")
         }
         response = requests.get(url, headers=headers)
-
 
         data = response.json()
         df = pd.DataFrame(data['data'])
