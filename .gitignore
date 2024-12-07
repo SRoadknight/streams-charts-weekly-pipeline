@@ -161,18 +161,12 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# Terraform
-*.tfstate
-*.tfstate.*
-terraform.output.*.json
-.terraform/
 
 # Mage AI
 .file_versions/
 .mage_data/
 __pycache__/
 .DS_Store
-
-# SSH 
-.ssh/
-.sshtunnel/
+metadata.yaml 
+.ssh_tunnel/
+aws_emr.json

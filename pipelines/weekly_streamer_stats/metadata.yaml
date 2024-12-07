@@ -23,7 +23,7 @@ blocks:
     file_source:
       path: transformers/transform_streamer_data.py
   downstream_blocks:
-  - export_to_iceberg
+  - export_to_md
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -40,20 +40,20 @@ blocks:
   color: null
   configuration:
     file_source:
-      path: data_exporters/export_to_iceberg.py
+      path: data_exporters/export_to_md.py
   downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: export_to_iceberg
+  name: export_to_md
   retry_config: null
   status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
   - transform_streamer_data
-  uuid: export_to_iceberg
+  uuid: export_to_md
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
