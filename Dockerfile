@@ -23,13 +23,9 @@ RUN poetry config virtualenvs.create false \
 RUN mkdir -p .file_versions && \
     chmod -R 777 .file_versions
 
-# Copy entrypoint script and set permissions
-COPY entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
-
 # Copy the rest of the application
 COPY . .
 
 EXPOSE 6789
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["mage", "start", "."]

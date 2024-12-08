@@ -273,6 +273,25 @@ dev = ["cogapp", "pre-commit", "pytest", "wheel"]
 tests = ["pytest"]
 
 [[package]]
+name = "arrow"
+version = "1.3.0"
+description = "Better dates & times for Python"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "arrow-1.3.0-py3-none-any.whl", hash = "sha256:c728b120ebc00eb84e01882a6f5e7927a53960aa990ce7dd2b10f39005a67f80"},
+    {file = "arrow-1.3.0.tar.gz", hash = "sha256:d4540617648cb5f895730f1ad8c82a65f2dad0166f57b75f3ca54759c4d67a85"},
+]
+
+[package.dependencies]
+python-dateutil = ">=2.7.0"
+types-python-dateutil = ">=2.8.10"
+
+[package.extras]
+doc = ["doc8", "sphinx (>=7.0.0)", "sphinx-autobuild", "sphinx-autodoc-typehints", "sphinx_rtd_theme (>=1.3.0)"]
+test = ["dateparser (==1.*)", "pre-commit", "pytest", "pytest-cov", "pytest-mock", "pytz (==2021.1)", "simplejson (==3.*)"]
+
+[[package]]
 name = "asttokens"
 version = "2.4.1"
 description = "Annotate AST trees with source code positions"
@@ -714,47 +733,56 @@ python-dateutil = "*"
 
 [[package]]
 name = "cryptography"
-version = "41.0.6"
+version = "42.0.0"
 description = "cryptography is a package which provides cryptographic recipes and primitives to Python developers."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "cryptography-41.0.6-cp37-abi3-macosx_10_12_universal2.whl", hash = "sha256:0f27acb55a4e77b9be8d550d762b0513ef3fc658cd3eb15110ebbcbd626db12c"},
-    {file = "cryptography-41.0.6-cp37-abi3-macosx_10_12_x86_64.whl", hash = "sha256:ae236bb8760c1e55b7a39b6d4d32d2279bc6c7c8500b7d5a13b6fb9fc97be35b"},
-    {file = "cryptography-41.0.6-cp37-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:afda76d84b053923c27ede5edc1ed7d53e3c9f475ebaf63c68e69f1403c405a8"},
-    {file = "cryptography-41.0.6-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:da46e2b5df770070412c46f87bac0849b8d685c5f2679771de277a422c7d0b86"},
-    {file = "cryptography-41.0.6-cp37-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:ff369dd19e8fe0528b02e8df9f2aeb2479f89b1270d90f96a63500afe9af5cae"},
-    {file = "cryptography-41.0.6-cp37-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:b648fe2a45e426aaee684ddca2632f62ec4613ef362f4d681a9a6283d10e079d"},
-    {file = "cryptography-41.0.6-cp37-abi3-musllinux_1_1_aarch64.whl", hash = "sha256:5daeb18e7886a358064a68dbcaf441c036cbdb7da52ae744e7b9207b04d3908c"},
-    {file = "cryptography-41.0.6-cp37-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:068bc551698c234742c40049e46840843f3d98ad7ce265fd2bd4ec0d11306596"},
-    {file = "cryptography-41.0.6-cp37-abi3-win32.whl", hash = "sha256:2132d5865eea673fe6712c2ed5fb4fa49dba10768bb4cc798345748380ee3660"},
-    {file = "cryptography-41.0.6-cp37-abi3-win_amd64.whl", hash = "sha256:48783b7e2bef51224020efb61b42704207dde583d7e371ef8fc2a5fb6c0aabc7"},
-    {file = "cryptography-41.0.6-pp310-pypy310_pp73-macosx_10_12_x86_64.whl", hash = "sha256:8efb2af8d4ba9dbc9c9dd8f04d19a7abb5b49eab1f3694e7b5a16a5fc2856f5c"},
-    {file = "cryptography-41.0.6-pp310-pypy310_pp73-manylinux_2_28_aarch64.whl", hash = "sha256:c5a550dc7a3b50b116323e3d376241829fd326ac47bc195e04eb33a8170902a9"},
-    {file = "cryptography-41.0.6-pp310-pypy310_pp73-manylinux_2_28_x86_64.whl", hash = "sha256:85abd057699b98fce40b41737afb234fef05c67e116f6f3650782c10862c43da"},
-    {file = "cryptography-41.0.6-pp310-pypy310_pp73-win_amd64.whl", hash = "sha256:f39812f70fc5c71a15aa3c97b2bbe213c3f2a460b79bd21c40d033bb34a9bf36"},
-    {file = "cryptography-41.0.6-pp38-pypy38_pp73-macosx_10_12_x86_64.whl", hash = "sha256:742ae5e9a2310e9dade7932f9576606836ed174da3c7d26bc3d3ab4bd49b9f65"},
-    {file = "cryptography-41.0.6-pp38-pypy38_pp73-manylinux_2_28_aarch64.whl", hash = "sha256:35f3f288e83c3f6f10752467c48919a7a94b7d88cc00b0668372a0d2ad4f8ead"},
-    {file = "cryptography-41.0.6-pp38-pypy38_pp73-manylinux_2_28_x86_64.whl", hash = "sha256:4d03186af98b1c01a4eda396b137f29e4e3fb0173e30f885e27acec8823c1b09"},
-    {file = "cryptography-41.0.6-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:b27a7fd4229abef715e064269d98a7e2909ebf92eb6912a9603c7e14c181928c"},
-    {file = "cryptography-41.0.6-pp39-pypy39_pp73-macosx_10_12_x86_64.whl", hash = "sha256:398ae1fc711b5eb78e977daa3cbf47cec20f2c08c5da129b7a296055fbb22aed"},
-    {file = "cryptography-41.0.6-pp39-pypy39_pp73-manylinux_2_28_aarch64.whl", hash = "sha256:7e00fb556bda398b99b0da289ce7053639d33b572847181d6483ad89835115f6"},
-    {file = "cryptography-41.0.6-pp39-pypy39_pp73-manylinux_2_28_x86_64.whl", hash = "sha256:60e746b11b937911dc70d164060d28d273e31853bb359e2b2033c9e93e6f3c43"},
-    {file = "cryptography-41.0.6-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:3288acccef021e3c3c10d58933f44e8602cf04dba96d9796d70d537bb2f4bbc4"},
-    {file = "cryptography-41.0.6.tar.gz", hash = "sha256:422e3e31d63743855e43e5a6fcc8b4acab860f560f9321b0ee6269cc7ed70cc3"},
+    {file = "cryptography-42.0.0-cp37-abi3-macosx_10_12_universal2.whl", hash = "sha256:c640b0ef54138fde761ec99a6c7dc4ce05e80420262c20fa239e694ca371d434"},
+    {file = "cryptography-42.0.0-cp37-abi3-macosx_10_12_x86_64.whl", hash = "sha256:678cfa0d1e72ef41d48993a7be75a76b0725d29b820ff3cfd606a5b2b33fda01"},
+    {file = "cryptography-42.0.0-cp37-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:146e971e92a6dd042214b537a726c9750496128453146ab0ee8971a0299dc9bd"},
+    {file = "cryptography-42.0.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:87086eae86a700307b544625e3ba11cc600c3c0ef8ab97b0fda0705d6db3d4e3"},
+    {file = "cryptography-42.0.0-cp37-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:0a68bfcf57a6887818307600c3c0ebc3f62fbb6ccad2240aa21887cda1f8df1b"},
+    {file = "cryptography-42.0.0-cp37-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:5a217bca51f3b91971400890905a9323ad805838ca3fa1e202a01844f485ee87"},
+    {file = "cryptography-42.0.0-cp37-abi3-musllinux_1_1_aarch64.whl", hash = "sha256:ca20550bb590db16223eb9ccc5852335b48b8f597e2f6f0878bbfd9e7314eb17"},
+    {file = "cryptography-42.0.0-cp37-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:33588310b5c886dfb87dba5f013b8d27df7ffd31dc753775342a1e5ab139e59d"},
+    {file = "cryptography-42.0.0-cp37-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:9515ea7f596c8092fdc9902627e51b23a75daa2c7815ed5aa8cf4f07469212ec"},
+    {file = "cryptography-42.0.0-cp37-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:35cf6ed4c38f054478a9df14f03c1169bb14bd98f0b1705751079b25e1cb58bc"},
+    {file = "cryptography-42.0.0-cp37-abi3-win32.whl", hash = "sha256:8814722cffcfd1fbd91edd9f3451b88a8f26a5fd41b28c1c9193949d1c689dc4"},
+    {file = "cryptography-42.0.0-cp37-abi3-win_amd64.whl", hash = "sha256:a2a8d873667e4fd2f34aedab02ba500b824692c6542e017075a2efc38f60a4c0"},
+    {file = "cryptography-42.0.0-cp39-abi3-macosx_10_12_universal2.whl", hash = "sha256:8fedec73d590fd30c4e3f0d0f4bc961aeca8390c72f3eaa1a0874d180e868ddf"},
+    {file = "cryptography-42.0.0-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:be41b0c7366e5549265adf2145135dca107718fa44b6e418dc7499cfff6b4689"},
+    {file = "cryptography-42.0.0-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3ca482ea80626048975360c8e62be3ceb0f11803180b73163acd24bf014133a0"},
+    {file = "cryptography-42.0.0-cp39-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:c58115384bdcfe9c7f644c72f10f6f42bed7cf59f7b52fe1bf7ae0a622b3a139"},
+    {file = "cryptography-42.0.0-cp39-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:56ce0c106d5c3fec1038c3cca3d55ac320a5be1b44bf15116732d0bc716979a2"},
+    {file = "cryptography-42.0.0-cp39-abi3-musllinux_1_1_aarch64.whl", hash = "sha256:324721d93b998cb7367f1e6897370644751e5580ff9b370c0a50dc60a2003513"},
+    {file = "cryptography-42.0.0-cp39-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:d97aae66b7de41cdf5b12087b5509e4e9805ed6f562406dfcf60e8481a9a28f8"},
+    {file = "cryptography-42.0.0-cp39-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:85f759ed59ffd1d0baad296e72780aa62ff8a71f94dc1ab340386a1207d0ea81"},
+    {file = "cryptography-42.0.0-cp39-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:206aaf42e031b93f86ad60f9f5d9da1b09164f25488238ac1dc488334eb5e221"},
+    {file = "cryptography-42.0.0-cp39-abi3-win32.whl", hash = "sha256:74f18a4c8ca04134d2052a140322002fef535c99cdbc2a6afc18a8024d5c9d5b"},
+    {file = "cryptography-42.0.0-cp39-abi3-win_amd64.whl", hash = "sha256:14e4b909373bc5bf1095311fa0f7fcabf2d1a160ca13f1e9e467be1ac4cbdf94"},
+    {file = "cryptography-42.0.0-pp310-pypy310_pp73-macosx_10_12_x86_64.whl", hash = "sha256:3005166a39b70c8b94455fdbe78d87a444da31ff70de3331cdec2c568cf25b7e"},
+    {file = "cryptography-42.0.0-pp310-pypy310_pp73-manylinux_2_28_aarch64.whl", hash = "sha256:be14b31eb3a293fc6e6aa2807c8a3224c71426f7c4e3639ccf1a2f3ffd6df8c3"},
+    {file = "cryptography-42.0.0-pp310-pypy310_pp73-manylinux_2_28_x86_64.whl", hash = "sha256:bd7cf7a8d9f34cc67220f1195884151426ce616fdc8285df9054bfa10135925f"},
+    {file = "cryptography-42.0.0-pp310-pypy310_pp73-win_amd64.whl", hash = "sha256:c310767268d88803b653fffe6d6f2f17bb9d49ffceb8d70aed50ad45ea49ab08"},
+    {file = "cryptography-42.0.0-pp39-pypy39_pp73-macosx_10_12_x86_64.whl", hash = "sha256:bdce70e562c69bb089523e75ef1d9625b7417c6297a76ac27b1b8b1eb51b7d0f"},
+    {file = "cryptography-42.0.0-pp39-pypy39_pp73-manylinux_2_28_aarch64.whl", hash = "sha256:e9326ca78111e4c645f7e49cbce4ed2f3f85e17b61a563328c85a5208cf34440"},
+    {file = "cryptography-42.0.0-pp39-pypy39_pp73-manylinux_2_28_x86_64.whl", hash = "sha256:69fd009a325cad6fbfd5b04c711a4da563c6c4854fc4c9544bff3088387c77c0"},
+    {file = "cryptography-42.0.0-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:988b738f56c665366b1e4bfd9045c3efae89ee366ca3839cd5af53eaa1401bce"},
+    {file = "cryptography-42.0.0.tar.gz", hash = "sha256:6cf9b76d6e93c62114bd19485e5cb003115c134cf9ce91f8ac924c44f8c8c3f4"},
 ]
 
 [package.dependencies]
-cffi = ">=1.12"
+cffi = {version = ">=1.12", markers = "platform_python_implementation != \"PyPy\""}
 
 [package.extras]
 docs = ["sphinx (>=5.3.0)", "sphinx-rtd-theme (>=1.1.1)"]
-docstest = ["pyenchant (>=1.6.11)", "sphinxcontrib-spelling (>=4.0.1)", "twine (>=1.12.0)"]
+docstest = ["pyenchant (>=1.6.11)", "readme-renderer", "sphinxcontrib-spelling (>=4.0.1)"]
 nox = ["nox"]
-pep8test = ["black", "check-sdist", "mypy", "ruff"]
+pep8test = ["check-sdist", "click", "mypy", "ruff"]
 sdist = ["build"]
 ssh = ["bcrypt (>=3.1.5)"]
-test = ["pretend", "pytest (>=6.2.0)", "pytest-benchmark", "pytest-cov", "pytest-xdist"]
+test = ["certifi", "pretend", "pytest (>=6.2.0)", "pytest-benchmark", "pytest-cov", "pytest-xdist"]
 test-randomorder = ["pytest-randomly"]
 
 [[package]]
@@ -1000,6 +1028,17 @@ files = [
 
 [package.extras]
 devel = ["colorama", "json-spec", "jsonschema", "pylint", "pytest", "pytest-benchmark", "pytest-cache", "validictory"]
+
+[[package]]
+name = "fqdn"
+version = "1.5.1"
+description = "Validates fully-qualified domain names against RFC 1123, so that they are acceptable to modern bowsers"
+optional = false
+python-versions = ">=2.7, !=3.0, !=3.1, !=3.2, !=3.3, !=3.4, <4"
+files = [
+    {file = "fqdn-1.5.1-py3-none-any.whl", hash = "sha256:3a179af3761e4df6eb2e026ff9e1a3033d3587bf980a0b1b2e1e5d08d7358014"},
+    {file = "fqdn-1.5.1.tar.gz", hash = "sha256:105ed3677e767fb5ca086a0c1f4bb66ebc3c100be518f0e0d755d9eae164d89f"},
+]
 
 [[package]]
 name = "freezegun"
@@ -1529,6 +1568,20 @@ widgetsnbextension = ">=4.0.12,<4.1.0"
 test = ["ipykernel", "jsonschema", "pytest (>=3.6.0)", "pytest-cov", "pytz"]
 
 [[package]]
+name = "isoduration"
+version = "20.11.0"
+description = "Operations with ISO 8601 durations"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "isoduration-20.11.0-py3-none-any.whl", hash = "sha256:b2904c2a4228c3d44f409c8ae8e2370eb21a26f7ac2ec5446df141dde3452042"},
+    {file = "isoduration-20.11.0.tar.gz", hash = "sha256:ac2f9015137935279eac671f94f89eb00584f940f5dc49462a0c4ee692ba1bd9"},
+]
+
+[package.dependencies]
+arrow = ">=0.15.0"
+
+[[package]]
 name = "itsdangerous"
 version = "1.1.0"
 description = "Various helpers to pass data to untrusted environments and back."
@@ -1635,9 +1688,17 @@ files = [
 
 [package.dependencies]
 attrs = ">=22.2.0"
+fqdn = {version = "*", optional = true, markers = "extra == \"format-nongpl\""}
+idna = {version = "*", optional = true, markers = "extra == \"format-nongpl\""}
+isoduration = {version = "*", optional = true, markers = "extra == \"format-nongpl\""}
+jsonpointer = {version = ">1.13", optional = true, markers = "extra == \"format-nongpl\""}
 jsonschema-specifications = ">=2023.03.6"
 referencing = ">=0.28.4"
+rfc3339-validator = {version = "*", optional = true, markers = "extra == \"format-nongpl\""}
+rfc3986-validator = {version = ">0.1.0", optional = true, markers = "extra == \"format-nongpl\""}
 rpds-py = ">=0.7.1"
+uri-template = {version = "*", optional = true, markers = "extra == \"format-nongpl\""}
+webcolors = {version = ">=24.6.0", optional = true, markers = "extra == \"format-nongpl\""}
 
 [package.extras]
 format = ["fqdn", "idna", "isoduration", "jsonpointer (>1.13)", "rfc3339-validator", "rfc3987", "uri-template", "webcolors (>=1.11)"]
@@ -1702,36 +1763,84 @@ docs = ["myst-parser", "pydata-sphinx-theme", "sphinx-autodoc-typehints", "sphin
 test = ["ipykernel", "pre-commit", "pytest (<8)", "pytest-cov", "pytest-timeout"]
 
 [[package]]
-name = "jupyter-server"
-version = "1.23.5"
-description = "The backend—i.e. core services, APIs, and REST endpoints—to Jupyter web applications."
+name = "jupyter-events"
+version = "0.10.0"
+description = "Jupyter Event System library"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "jupyter_server-1.23.5-py3-none-any.whl", hash = "sha256:d42e520af98af9fbb7f0fb0d069991054d88e4d2ee051eb7110aef35f3756cef"},
-    {file = "jupyter_server-1.23.5.tar.gz", hash = "sha256:a2caa759e2a29ece1aad013c58215fe951f38317b97de462b921834955fe3fca"},
+    {file = "jupyter_events-0.10.0-py3-none-any.whl", hash = "sha256:4b72130875e59d57716d327ea70d3ebc3af1944d3717e5a498b8a06c6c159960"},
+    {file = "jupyter_events-0.10.0.tar.gz", hash = "sha256:670b8229d3cc882ec782144ed22e0d29e1c2d639263f92ca8383e66682845e22"},
 ]
 
 [package.dependencies]
-anyio = ">=3.1.0,<4"
-argon2-cffi = "*"
-jinja2 = "*"
-jupyter-client = ">=6.1.12"
-jupyter-core = ">=4.12,<5.0.dev0 || >=5.1.dev0"
-nbconvert = ">=6.4.4"
-nbformat = ">=5.2.0"
-packaging = "*"
-prometheus-client = "*"
-pywinpty = {version = "*", markers = "os_name == \"nt\""}
-pyzmq = ">=17"
-Send2Trash = "*"
-terminado = ">=0.8.3"
-tornado = ">=6.1.0"
-traitlets = ">=5.1"
-websocket-client = "*"
+jsonschema = {version = ">=4.18.0", extras = ["format-nongpl"]}
+python-json-logger = ">=2.0.4"
+pyyaml = ">=5.3"
+referencing = "*"
+rfc3339-validator = "*"
+rfc3986-validator = ">=0.1.1"
+traitlets = ">=5.3"
 
 [package.extras]
-test = ["coverage", "ipykernel", "pre-commit", "pytest (>=7.0)", "pytest-console-scripts", "pytest-cov", "pytest-mock", "pytest-timeout", "pytest-tornasync", "requests"]
+cli = ["click", "rich"]
+docs = ["jupyterlite-sphinx", "myst-parser", "pydata-sphinx-theme", "sphinxcontrib-spelling"]
+test = ["click", "pre-commit", "pytest (>=7.0)", "pytest-asyncio (>=0.19.0)", "pytest-console-scripts", "rich"]
+
+[[package]]
+name = "jupyter-server"
+version = "2.14.1"
+description = "The backend—i.e. core services, APIs, and REST endpoints—to Jupyter web applications."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "jupyter_server-2.14.1-py3-none-any.whl", hash = "sha256:16f7177c3a4ea8fe37784e2d31271981a812f0b2874af17339031dc3510cc2a5"},
+    {file = "jupyter_server-2.14.1.tar.gz", hash = "sha256:12558d158ec7a0653bf96cc272bc7ad79e0127d503b982ed144399346694f726"},
+]
+
+[package.dependencies]
+anyio = ">=3.1.0"
+argon2-cffi = ">=21.1"
+jinja2 = ">=3.0.3"
+jupyter-client = ">=7.4.4"
+jupyter-core = ">=4.12,<5.0.dev0 || >=5.1.dev0"
+jupyter-events = ">=0.9.0"
+jupyter-server-terminals = ">=0.4.4"
+nbconvert = ">=6.4.4"
+nbformat = ">=5.3.0"
+overrides = ">=5.0"
+packaging = ">=22.0"
+prometheus-client = ">=0.9"
+pywinpty = {version = ">=2.0.1", markers = "os_name == \"nt\""}
+pyzmq = ">=24"
+send2trash = ">=1.8.2"
+terminado = ">=0.8.3"
+tornado = ">=6.2.0"
+traitlets = ">=5.6.0"
+websocket-client = ">=1.7"
+
+[package.extras]
+docs = ["ipykernel", "jinja2", "jupyter-client", "myst-parser", "nbformat", "prometheus-client", "pydata-sphinx-theme", "send2trash", "sphinx-autodoc-typehints", "sphinxcontrib-github-alt", "sphinxcontrib-openapi (>=0.8.0)", "sphinxcontrib-spelling", "sphinxemoji", "tornado", "typing-extensions"]
+test = ["flaky", "ipykernel", "pre-commit", "pytest (>=7.0,<9)", "pytest-console-scripts", "pytest-jupyter[server] (>=0.7)", "pytest-timeout", "requests"]
+
+[[package]]
+name = "jupyter-server-terminals"
+version = "0.5.3"
+description = "A Jupyter Server Extension Providing Terminals."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "jupyter_server_terminals-0.5.3-py3-none-any.whl", hash = "sha256:41ee0d7dc0ebf2809c668e0fc726dfaf258fcd3e769568996ca731b6194ae9aa"},
+    {file = "jupyter_server_terminals-0.5.3.tar.gz", hash = "sha256:5ae0295167220e9ace0edcfdb212afd2b01ee8d179fe6f23c899590e9b8a5269"},
+]
+
+[package.dependencies]
+pywinpty = {version = ">=2.0.3", markers = "os_name == \"nt\""}
+terminado = ">=0.8.3"
+
+[package.extras]
+docs = ["jinja2", "jupyter-server", "mistune (<4.0)", "myst-parser", "nbformat", "packaging", "pydata-sphinx-theme", "sphinxcontrib-github-alt", "sphinxcontrib-openapi", "sphinxcontrib-spelling", "sphinxemoji", "tornado"]
+test = ["jupyter-server (>=2.0.0)", "pytest (>=7.0)", "pytest-jupyter[server] (>=0.5.3)", "pytest-timeout"]
 
 [[package]]
 name = "jupyterlab-pygments"
@@ -1882,13 +1991,13 @@ files = [
 
 [[package]]
 name = "mage-ai"
-version = "0.9.74"
+version = "0.9.75"
 description = "Mage is a tool for building and deploying data pipelines."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "mage_ai-0.9.74-py3-none-any.whl", hash = "sha256:32b966aab1d112d6820f3978f4b501de882f54fa7726cc555ca06795989db69c"},
-    {file = "mage_ai-0.9.74.tar.gz", hash = "sha256:d4b01a6b2e4fb753014eb7af33600a3199a60ccffb827320693cc2544cde7de9"},
+    {file = "mage_ai-0.9.75-py3-none-any.whl", hash = "sha256:5c69846c4538943bd3471b440ee386d05eb01d3e34851d97f82ed12a343e2989"},
+    {file = "mage_ai-0.9.75.tar.gz", hash = "sha256:0852b564985904c26d6dd1dda27379b706fb05f065129047bde3cb2eb2cce3a1"},
 ]
 
 [package.dependencies]
@@ -1898,7 +2007,7 @@ alembic = ">=1.7.5"
 bcrypt = "4.0.1"
 cachetools = "*"
 croniter = "1.3.7"
-cryptography = "41.0.6"
+cryptography = "42.0.0"
 dask = ">=2022.2.0"
 datadog = "0.44.0"
 Faker = "4.14.0"
@@ -1913,7 +2022,7 @@ itsdangerous = ">=1.1.0,<1.2.0"
 Jinja2 = "3.1.3"
 joblib = ">=1.1.0"
 jupyter-client = "7.4.4"
-jupyter-server = "1.23.5"
+jupyter-server = "2.14.1"
 ldap3 = "2.9.1"
 memory-profiler = "*"
 newrelic = "8.8.0"
@@ -1923,7 +2032,7 @@ Pillow = "10.3.0"
 polars = ">=0.18.0,<0.19.2"
 protobuf = ">=4.21.12,<4.22.0"
 psutil = "5.9.8"
-pyarrow = "14.0.1"
+pyarrow = ">=14.0.1"
 PyGithub = "1.59.0"
 PyJWT = "2.6.0"
 python-dateutil = "2.8.2"
@@ -1934,6 +2043,7 @@ requests = ">=2.31.0,<2.32.0"
 "ruamel.yaml" = "0.17.17"
 scikit-learn = ">=1.0"
 sentry-sdk = "1.19.1"
+setuptools = "70.0.0"
 simplejson = "*"
 six = ">=1.15.0"
 sqlalchemy = ">=1.4.20,<2.0.0"
@@ -1944,26 +2054,27 @@ tornado = "6.3.3"
 typer = {version = "0.9.0", extras = ["all"]}
 typing-extensions = "4.10.0"
 watchdog = "4.0.0"
+Werkzeug = "3.0.3"
 
 [package.extras]
 ai = ["astor (>=0.8.1)", "langchain (==0.1.6)", "langchain-community (<0.0.20)", "openai (==1.39.0)"]
-all = ["PyGithub (==1.59.0)", "astor (>=0.8.1)", "aws-secretsmanager-caching (==1.1.1.5)", "azure-eventhub (==5.11.2)", "azure-identity (==1.12.0)", "azure-keyvault-certificates (==4.6.0)", "azure-keyvault-secrets (==4.6.0)", "azure-mgmt-containerinstance (==10.1.0)", "azure-storage-blob (==12.14.1)", "boto3 (==1.26.60)", "botocore (==1.29.60)", "clickhouse-connect (>=0.6.23,<0.7.0)", "confluent-avro (>=1.8.0,<1.9.0)", "db-dtypes (==1.0.5)", "dbt-bigquery (==1.7.2)", "dbt-clickhouse (==1.7.1)", "dbt-core (==1.7.4)", "dbt-duckdb (==1.7.0)", "dbt-postgres (==1.7.4)", "dbt-redshift (==1.7.1)", "dbt-snowflake (==1.7.1)", "dbt-spark (==1.7.1)", "dbt-sqlserver (==1.7.4)", "dbt-trino (==1.7.1)", "duckdb (==1.0.0)", "elasticsearch (==8.9.0)", "google-api-core (>=2.15.0,<2.16.0)", "google-api-python-client (>=2.70.0,<2.71.0)", "google-cloud-bigquery (>=3.14.1,<3.15.0)", "google-cloud-iam (>=2.13.0,<2.14.0)", "google-cloud-pubsub (>=2.19.0,<2.20.0)", "google-cloud-run (>=0.10.1,<0.11.0)", "google-cloud-storage (>=2.5.0,<2.6.0)", "great-expectations (==0.18.12)", "gspread (==5.7.2)", "influxdb-client (==1.36.1)", "kafka-python (==2.0.2)", "kubernetes (>=28.1.0)", "langchain (==0.1.6)", "langchain-community (<0.0.20)", "ldap3 (==2.9.1)", "lxml (==4.9.4)", "nats-py (==2.6.0)", "nkeys (>=0.1.0,<0.2.0)", "openai (==1.39.0)", "opensearch-py (==2.0.0)", "opentelemetry-api (==1.22.0)", "opentelemetry-exporter-otlp (==1.22.0)", "opentelemetry-exporter-prometheus (==0.43b0)", "opentelemetry-instrumentation-sqlalchemy (==0.43b0)", "opentelemetry-instrumentation-tornado (==0.43b0)", "oracledb (==1.3.1)", "pika (==1.3.1)", "pinotdb (==5.1.0)", "prometheus-client (>=0.18.0)", "protobuf (>=4.21.12,<4.22.0)", "psycopg2 (==2.9.3)", "psycopg2-binary (==2.9.3)", "pyairtable (==2.3.3)", "pydruid (==0.6.5)", "pymongo (==4.3.3)", "pyodbc (==4.0.35)", "redshift-connector (==2.0.915)", "requests-aws4auth (==1.1.2)", "snowflake-connector-python (==3.5.0)", "sshtunnel (==0.4.0)", "stomp.py (==8.1.0)", "thefuzz[speedup] (==0.19.0)", "trino (>=0.326,<1.0)"]
+all = ["PyGithub (==1.59.0)", "astor (>=0.8.1)", "aws-secretsmanager-caching (==1.1.1.5)", "azure-eventhub (==5.11.2)", "azure-identity (==1.12.0)", "azure-keyvault-certificates (==4.6.0)", "azure-keyvault-secrets (==4.6.0)", "azure-mgmt-containerinstance (==10.1.0)", "azure-storage-blob (==12.14.1)", "boto3 (==1.26.60)", "botocore (==1.29.60)", "clickhouse-connect (>=0.6.23,<0.7.0)", "confluent-avro (>=1.8.0,<1.9.0)", "db-dtypes (==1.0.5)", "dbt-bigquery (==1.7.2)", "dbt-clickhouse (==1.7.1)", "dbt-core (==1.7.4)", "dbt-duckdb (==1.7.0)", "dbt-postgres (==1.7.4)", "dbt-redshift (==1.7.1)", "dbt-snowflake (==1.7.1)", "dbt-spark (==1.7.1)", "dbt-sqlserver (==1.7.4)", "dbt-trino (==1.7.1)", "duckdb (==1.0.0)", "elasticsearch (==8.15.1)", "google-api-core (>=2.15.0,<2.16.0)", "google-api-python-client (>=2.70.0,<2.71.0)", "google-cloud-bigquery (>=3.14.1,<3.15.0)", "google-cloud-iam (>=2.13.0,<2.14.0)", "google-cloud-pubsub (>=2.19.0,<2.20.0)", "google-cloud-run (>=0.10.1,<0.11.0)", "google-cloud-storage (>=2.5.0,<2.6.0)", "great-expectations (==0.18.12)", "gspread (==5.7.2)", "influxdb-client (==1.36.1)", "kafka-python (==2.0.2)", "kubernetes (>=28.1.0)", "langchain (==0.1.6)", "langchain-community (<0.0.20)", "ldap3 (==2.9.1)", "lxml (==4.9.4)", "nats-py (==2.6.0)", "nkeys (>=0.1.0,<0.2.0)", "nkeys (>=0.2.0,<0.3.0)", "openai (==1.39.0)", "opensearch-py (==2.0.0)", "opentelemetry-api (==1.22.0)", "opentelemetry-exporter-otlp (==1.22.0)", "opentelemetry-exporter-prometheus (==0.43b0)", "opentelemetry-instrumentation-sqlalchemy (==0.43b0)", "opentelemetry-instrumentation-tornado (==0.43b0)", "oracledb (==1.3.1)", "pika (==1.3.1)", "pinotdb (==5.1.0)", "prometheus-client (>=0.18.0)", "protobuf (>=4.21.12,<4.22.0)", "psycopg2 (==2.9.3)", "psycopg2-binary (==2.9.3)", "pyairtable (==2.3.3)", "pydruid (==0.6.5)", "pymongo (==4.3.3)", "pyodbc (==4.0.35)", "pyodbc (==5.0.1)", "redshift-connector (==2.0.915)", "requests-aws4auth (==1.1.2)", "snowflake-connector-python (==3.7.1)", "sshtunnel (==0.4.0)", "stomp.py (==8.1.0)", "thefuzz[speedup] (==0.19.0)", "trino (>=0.326,<1.0)"]
 azure = ["azure-eventhub (==5.11.2)", "azure-identity (==1.12.0)", "azure-keyvault-certificates (==4.6.0)", "azure-keyvault-secrets (==4.6.0)", "azure-mgmt-containerinstance (==10.1.0)", "azure-storage-blob (==12.14.1)"]
 bigquery = ["db-dtypes (==1.0.5)", "google-cloud-bigquery (>=3.0,<4.0)"]
 chroma = ["chromadb (>=0.4.17)"]
 clickhouse = ["clickhouse-connect (>=0.6.23,<0.7.0)"]
 dbt = ["dbt-bigquery (==1.7.2)", "dbt-clickhouse (==1.7.1)", "dbt-core (==1.7.4)", "dbt-duckdb (==1.7.0)", "dbt-postgres (==1.7.4)", "dbt-redshift (==1.7.1)", "dbt-snowflake (==1.7.1)", "dbt-spark (==1.7.1)", "dbt-sqlserver (==1.7.4)", "dbt-trino (==1.7.1)", "trino (>=0.326,<1.0)"]
 google-cloud-storage = ["google-cloud-storage (==2.5.0)", "gspread (==5.7.2)"]
-hdf5 = ["tables (==3.7.0)"]
-mysql = ["mysql-connector-python (>=8.2.0,<8.3.0)"]
-oracle = ["oracledb (==1.3.1)"]
+hdf5 = ["tables (==3.10.1)", "tables (==3.7.0)"]
+mysql = ["mysql-connector-python (>=8.2.0,<8.3.0)", "mysql-connector-python (>=9.0.0,<9.1.0)"]
+oracle = ["oracledb (==1.3.1)", "oracledb (==2.4.1)"]
 postgres = ["psycopg2 (==2.9.3)", "psycopg2-binary (==2.9.3)", "sshtunnel (==0.4.0)"]
 qdrant = ["qdrant-client (==1.6.9)", "sentence-transformers (==2.2.2)"]
 redshift = ["boto3 (==1.26.60)", "lxml (==4.9.4)", "redshift-connector (==2.0.915)"]
 s3 = ["boto3 (==1.26.60)", "botocore (==1.29.60)"]
-snowflake = ["snowflake-connector-python (==3.5.0)"]
+snowflake = ["snowflake-connector-python (==3.7.1)"]
 spark = ["boto3 (==1.26.60)", "botocore (==1.29.60)"]
-streaming = ["confluent-avro (>=1.8.0,<1.9.0)", "elasticsearch (==8.9.0)", "influxdb-client (==1.36.1)", "kafka-python (==2.0.2)", "nats-py (==2.6.0)", "nkeys (>=0.1.0,<0.2.0)", "opensearch-py (==2.0.0)", "pika (==1.3.1)", "pymongo (==4.3.3)", "requests-aws4auth (==1.1.2)", "stomp.py (==8.1.0)"]
+streaming = ["confluent-avro (>=1.8.0,<1.9.0)", "elasticsearch (==8.15.1)", "influxdb-client (==1.36.1)", "kafka-python (==2.0.2)", "nats-py (==2.6.0)", "nkeys (>=0.1.0,<0.2.0)", "nkeys (>=0.2.0,<0.3.0)", "opensearch-py (==2.0.0)", "pika (==1.3.1)", "pymongo (==4.3.3)", "requests-aws4auth (==1.1.2)", "stomp.py (==8.1.0)"]
 
 [[package]]
 name = "makefun"
@@ -2596,6 +2707,17 @@ files = [
     {file = "numpy-1.26.4-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:95a7476c59002f2f6c590b9b7b998306fba6a5aa646b1e22ddfeaf8f78c3a29c"},
     {file = "numpy-1.26.4-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:7e50d0a0cc3189f9cb0aeb3a6a6af18c16f59f004b866cd2be1c14b36134a4a0"},
     {file = "numpy-1.26.4.tar.gz", hash = "sha256:2a02aba9ed12e4ac4eb3ea9421c420301a0c6460d9830d74a9df87efa4912010"},
+]
+
+[[package]]
+name = "overrides"
+version = "7.7.0"
+description = "A decorator to automatically detect mismatch when overriding a method."
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "overrides-7.7.0-py3-none-any.whl", hash = "sha256:c7ed9d062f78b8e4c1a7b70bd8796b35ead4d9f510227ef9c5dc7626c60d7e49"},
+    {file = "overrides-7.7.0.tar.gz", hash = "sha256:55158fa3d93b98cc75299b1e67078ad9003ca27945c76162c1c0766d6f91820a"},
 ]
 
 [[package]]
@@ -3566,6 +3688,17 @@ files = [
 cli = ["click (>=5.0)"]
 
 [[package]]
+name = "python-json-logger"
+version = "2.0.7"
+description = "A python library adding a json log formatter"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "python-json-logger-2.0.7.tar.gz", hash = "sha256:23e7ec02d34237c5aa1e29a070193a4ea87583bb4e7f8fd06d3de8264c4b2e1c"},
+    {file = "python_json_logger-2.0.7-py3-none-any.whl", hash = "sha256:f380b826a991ebbe3de4d897aeec42760035ac760345e57b812938dc8b35e2bd"},
+]
+
+[[package]]
 name = "python-levenshtein"
 version = "0.26.1"
 description = "Python extension for computing string edit distances and similarities."
@@ -3967,6 +4100,20 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
+name = "rfc3339-validator"
+version = "0.1.4"
+description = "A pure python RFC3339 validator"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+files = [
+    {file = "rfc3339_validator-0.1.4-py2.py3-none-any.whl", hash = "sha256:24f6ec1eda14ef823da9e36ec7113124b39c04d50a4d3d3a3c2859577e7791fa"},
+    {file = "rfc3339_validator-0.1.4.tar.gz", hash = "sha256:138a2abdf93304ad60530167e51d2dfb9549521a836871b88d7f4695d0022f6b"},
+]
+
+[package.dependencies]
+six = "*"
+
+[[package]]
 name = "rfc3986"
 version = "1.5.0"
 description = "Validating URI References per RFC 3986"
@@ -3982,6 +4129,17 @@ idna = {version = "*", optional = true, markers = "extra == \"idna2008\""}
 
 [package.extras]
 idna2008 = ["idna"]
+
+[[package]]
+name = "rfc3986-validator"
+version = "0.1.1"
+description = "Pure python rfc3986 validator"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+files = [
+    {file = "rfc3986_validator-0.1.1-py2.py3-none-any.whl", hash = "sha256:2f235c432ef459970b4306369336b9d5dbdda31b510ca1e327636e01f528bfa9"},
+    {file = "rfc3986_validator-0.1.1.tar.gz", hash = "sha256:3d44bde7921b3b9ec3ae4e3adca370438eccebc676456449b145d533b240d055"},
+]
 
 [[package]]
 name = "rich"
@@ -4291,23 +4449,18 @@ tornado = ["tornado (>=5)"]
 
 [[package]]
 name = "setuptools"
-version = "75.6.0"
+version = "70.0.0"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.8"
 files = [
-    {file = "setuptools-75.6.0-py3-none-any.whl", hash = "sha256:ce74b49e8f7110f9bf04883b730f4765b774ef3ef28f722cce7c273d253aaf7d"},
-    {file = "setuptools-75.6.0.tar.gz", hash = "sha256:8199222558df7c86216af4f84c30e9b34a61d8ba19366cc914424cdbd28252f6"},
+    {file = "setuptools-70.0.0-py3-none-any.whl", hash = "sha256:54faa7f2e8d2d11bcd2c07bed282eef1046b5c080d1c32add737d7b5817b1ad4"},
+    {file = "setuptools-70.0.0.tar.gz", hash = "sha256:f211a66637b8fa059bb28183da127d4e86396c991a942b028c6650d4319c3fd0"},
 ]
 
 [package.extras]
-check = ["pytest-checkdocs (>=2.4)", "pytest-ruff (>=0.2.1)", "ruff (>=0.7.0)"]
-core = ["importlib_metadata (>=6)", "jaraco.collections", "jaraco.functools (>=4)", "jaraco.text (>=3.7)", "more_itertools", "more_itertools (>=8.8)", "packaging", "packaging (>=24.2)", "platformdirs (>=4.2.2)", "tomli (>=2.0.1)", "wheel (>=0.43.0)"]
-cover = ["pytest-cov"]
-doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "pygments-github-lexers (==0.0.5)", "pyproject-hooks (!=1.1)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-favicon", "sphinx-inline-tabs", "sphinx-lint", "sphinx-notfound-page (>=1,<2)", "sphinx-reredirects", "sphinxcontrib-towncrier", "towncrier (<24.7)"]
-enabler = ["pytest-enabler (>=2.2)"]
-test = ["build[virtualenv] (>=1.0.3)", "filelock (>=3.4.0)", "ini2toml[lite] (>=0.14)", "jaraco.develop (>=7.21)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "jaraco.test (>=5.5)", "packaging (>=24.2)", "pip (>=19.1)", "pyproject-hooks (!=1.1)", "pytest (>=6,!=8.1.*)", "pytest-home (>=0.5)", "pytest-perf", "pytest-subprocess", "pytest-timeout", "pytest-xdist (>=3)", "tomli-w (>=1.0.0)", "virtualenv (>=13.0.0)", "wheel (>=0.44.0)"]
-type = ["importlib_metadata (>=7.0.2)", "jaraco.develop (>=7.21)", "mypy (>=1.12,<1.14)", "pytest-mypy"]
+docs = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "pygments-github-lexers (==0.0.5)", "pyproject-hooks (!=1.1)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-favicon", "sphinx-inline-tabs", "sphinx-lint", "sphinx-notfound-page (>=1,<2)", "sphinx-reredirects", "sphinxcontrib-towncrier"]
+testing = ["build[virtualenv] (>=1.0.3)", "filelock (>=3.4.0)", "importlib-metadata", "ini2toml[lite] (>=0.14)", "jaraco.develop (>=7.21)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "mypy (==1.9)", "packaging (>=23.2)", "pip (>=19.1)", "pyproject-hooks (!=1.1)", "pytest (>=6,!=8.1.1)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-home (>=0.5)", "pytest-mypy", "pytest-perf", "pytest-ruff (>=0.2.1)", "pytest-subprocess", "pytest-timeout", "pytest-xdist (>=3)", "tomli", "tomli-w (>=1.0.0)", "virtualenv (>=13.0.0)", "wheel"]
 
 [[package]]
 name = "shellingham"
@@ -4876,6 +5029,17 @@ doc = ["cairosvg (>=2.5.2,<3.0.0)", "mdx-include (>=1.4.1,<2.0.0)", "mkdocs (>=1
 test = ["black (>=22.3.0,<23.0.0)", "coverage (>=6.2,<7.0)", "isort (>=5.0.6,<6.0.0)", "mypy (==0.910)", "pytest (>=4.4.0,<8.0.0)", "pytest-cov (>=2.10.0,<5.0.0)", "pytest-sugar (>=0.9.4,<0.10.0)", "pytest-xdist (>=1.32.0,<4.0.0)", "rich (>=10.11.0,<14.0.0)", "shellingham (>=1.3.0,<2.0.0)"]
 
 [[package]]
+name = "types-python-dateutil"
+version = "2.9.0.20241206"
+description = "Typing stubs for python-dateutil"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "types_python_dateutil-2.9.0.20241206-py3-none-any.whl", hash = "sha256:e248a4bc70a486d3e3ec84d0dc30eec3a5f979d6e7ee4123ae043eedbb987f53"},
+    {file = "types_python_dateutil-2.9.0.20241206.tar.gz", hash = "sha256:18f493414c26ffba692a72369fea7a154c502646301ebfe3d56a04b3767284cb"},
+]
+
+[[package]]
 name = "typing-extensions"
 version = "4.10.0"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -4913,6 +5077,20 @@ tzdata = {version = "*", markers = "platform_system == \"Windows\""}
 
 [package.extras]
 devenv = ["check-manifest", "pytest (>=4.3)", "pytest-cov", "pytest-mock (>=3.3)", "zest.releaser"]
+
+[[package]]
+name = "uri-template"
+version = "1.3.0"
+description = "RFC 6570 URI Template Processor"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "uri-template-1.3.0.tar.gz", hash = "sha256:0e00f8eb65e18c7de20d595a14336e9f337ead580c70934141624b6d1ffdacc7"},
+    {file = "uri_template-1.3.0-py3-none-any.whl", hash = "sha256:a44a133ea12d44a0c0f06d7d42a52d71282e77e2f937d8abd5655b8d56fc1363"},
+]
+
+[package.extras]
+dev = ["flake8", "flake8-annotations", "flake8-bandit", "flake8-bugbear", "flake8-commas", "flake8-comprehensions", "flake8-continuation", "flake8-datetimez", "flake8-docstrings", "flake8-import-order", "flake8-literal", "flake8-modern-annotations", "flake8-noqa", "flake8-pyproject", "flake8-requirements", "flake8-typechecking-import", "flake8-use-fstring", "mypy", "pep8-naming", "types-PyYAML"]
 
 [[package]]
 name = "urllib3"
@@ -4984,6 +5162,17 @@ files = [
 ]
 
 [[package]]
+name = "webcolors"
+version = "24.11.1"
+description = "A library for working with the color formats defined by HTML and CSS."
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "webcolors-24.11.1-py3-none-any.whl", hash = "sha256:515291393b4cdf0eb19c155749a096f779f7d909f7cceea072791cb9095b92e9"},
+    {file = "webcolors-24.11.1.tar.gz", hash = "sha256:ecb3d768f32202af770477b8b65f318fa4f566c22948673a977b00d589dd80f6"},
+]
+
+[[package]]
 name = "webencodings"
 version = "0.5.1"
 description = "Character encoding aliases for legacy web content"
@@ -5009,6 +5198,23 @@ files = [
 docs = ["Sphinx (>=6.0)", "myst-parser (>=2.0.0)", "sphinx-rtd-theme (>=1.1.0)"]
 optional = ["python-socks", "wsaccel"]
 test = ["websockets"]
+
+[[package]]
+name = "werkzeug"
+version = "3.0.3"
+description = "The comprehensive WSGI web application library."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "werkzeug-3.0.3-py3-none-any.whl", hash = "sha256:fc9645dc43e03e4d630d23143a04a7f947a9a3b5727cd535fdfe155a17cc48c8"},
+    {file = "werkzeug-3.0.3.tar.gz", hash = "sha256:097e5bfda9f0aba8da6b8545146def481d06aa7d3266e7448e2cccf67dd8bd18"},
+]
+
+[package.dependencies]
+MarkupSafe = ">=2.1.1"
+
+[package.extras]
+watchdog = ["watchdog (>=2.3)"]
 
 [[package]]
 name = "widgetsnbextension"
@@ -5194,4 +5400,4 @@ propcache = ">=0.2.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "b817ef16c5dc3291465042e311481d9b9f9f137f975bf07f16e0be7d4e287c52"
+content-hash = "74b36a7faad6b4e489c77af86f023ab690a8248ceaf984b18339757b02f7a7c0"
