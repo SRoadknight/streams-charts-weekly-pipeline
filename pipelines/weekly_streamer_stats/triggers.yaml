@@ -1,13 +1,13 @@
 triggers:
-- description: null
+- description: 'Runs the weekly streamer stats pipeline on Monday at 8am UTC, this is midnight PST and seems like a sensible weekly cutoff'
   envs: []
-  last_enabled_at: 2024-12-08 15:31:28.930404
-  name: weekly run
+  last_enabled_at: 2024-12-09 18:26:37.936816
+  name: Weekly Streamer Stats (Monday 8am UTC)
   pipeline_uuid: weekly_streamer_stats
-  schedule_interval: '@weekly'
+  schedule_interval: 0 8 * * 1
   schedule_type: time
   settings: null
   sla: null
-  start_time: 2024-12-09 08:00:00
+  start_time: 2024-12-16 08:00:00
   status: active
   variables: {}

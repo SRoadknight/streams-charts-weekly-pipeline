@@ -8,10 +8,11 @@ def transform(data, *args, **kwargs):
     """
     Add weekly date ranges and identifiers
     """
-    start_date = datetime.datetime.today().date() - datetime.timedelta(days=datetime.datetime.today().weekday())
+    today = datetime.datetime.today()
+    days_since_monday = today.weekday() + 7 
+    start_date = today - datetime.timedelta(days=days_since_monday)
     end_date = start_date + datetime.timedelta(days=6)
-    week_number = start_date.isocalendar()[1]
-    year = start_date.year
+    year, week_number, _ = start_date.isocalendar()
 
     data['start_date'] = start_date
     data['end_date'] = end_date
