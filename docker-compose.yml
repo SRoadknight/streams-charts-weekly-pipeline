@@ -1,4 +1,15 @@
 services:
+  db:
+    image: postgres:16.1
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mage
+
   mage:
     build: .
     ports:
@@ -9,3 +20,8 @@ services:
       - .env
     environment:
       - POETRY_VIRTUALENVS_CREATE=false
+    depends_on:
+    - db
+
+volumes:
+  postgres_data:
