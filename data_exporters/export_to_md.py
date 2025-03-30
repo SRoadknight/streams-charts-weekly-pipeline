@@ -34,7 +34,8 @@ def export_data(df, *args, **kwargs):
         pa.field("start_date", pa.date32()),  
         pa.field("end_date", pa.date32()),          
         pa.field("year", pa.int16()),           
-        pa.field("week_number", pa.int8())       
+        pa.field("week_number", pa.int8()),
+        pa.field("rank_within_week", pa.int64()) 
     ])
     
     duckdb_schema = f"""
@@ -58,7 +59,8 @@ def export_data(df, *args, **kwargs):
         start_date DATE, 
         end_date DATE, 
         year INT16, 
-        week_number INT8)
+        week_number INT8,
+        rank_within_week BIGINT)
     """
 
     loader = DuckDBDataIngestor(

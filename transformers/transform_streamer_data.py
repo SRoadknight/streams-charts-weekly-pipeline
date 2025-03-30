@@ -18,4 +18,5 @@ def transform(data, *args, **kwargs):
     data['end_date'] = end_date
     data['year'] = year
     data['week_number'] = week_number
+    data['rank_within_week'] = data['hours_watched'].rank(method='dense', ascending=False).astype(int)
     return data
