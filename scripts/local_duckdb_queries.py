@@ -1,4 +1,7 @@
 import duckdb
+from config import Config
 
-con = duckdb.connect("weekly_streamer_test")
+settings = Config()
+
+con = duckdb.connect(f"../{settings.database_name}")
 con.sql("SELECT * FROM channel_stats_test").show()
