@@ -1,0 +1,37 @@
+name: Weekly Mage Pipeline
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'  
+  workflow_dispatch:  
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install dependencies
+        run: |
+          poetry config virtualenvs.create false
+          poetry install --no-interaction --no-ansi
+
+      - name: Run pipeline in production mode
+        run: python -m mage_ai.cli.main run streams-charts-weekly-pipeline weekly_streamer_stats
+        env:
+          ENVIRONMENT: 'prod'
+          STREAMS_CHARTS_CLIENT_ID: ${{ secrets.STREAMS_CHARTS_CLIENT_ID }}
+          STREAMS_CHARTS_TOKEN: ${{ secrets.STREAMS_CHARTS_TOKEN }}
+          MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
+          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+          TABLE_NAME: ${{ secrets.TABLE_NAME }}
+          MAGE_DATABASE_CONNECTION_URL: ${{ secrets.MAGE_DATABASE_CONNECTION_URL }}

@@ -20,6 +20,9 @@ class DuckDBDataIngestor:
 
     def initialise_connection(self, destination):
         """Initialise database connection."""
+        if os.environ.get("GITHUB_ACTIONS_TEST") == "true":
+            return duckdb.connect(database=":memory:")
+
         if destination == "md":
             if not os.environ.get("MOTHERDUCK_TOKEN"):
                 raise ValueError("MotherDuck token not found")

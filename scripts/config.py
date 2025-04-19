@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Optional
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Config(BaseSettings):
@@ -14,9 +14,9 @@ class Config(BaseSettings):
     DESTINATION: Literal['md', 'local'] = 'local' if ENVIRONMENT == 'local' else 'md'
     
     # Database settings
-    DATABASE_NAME: str
-    TABLE_NAME: str
-    MOTHERDUCK_TOKEN: str
+    DATABASE_NAME: Optional[str] = None
+    TABLE_NAME: Optional[str] = None
+    MOTHERDUCK_TOKEN: Optional[str] = None
 
     # API Credentials
     STREAMS_CHARTS_CLIENT_ID: str
@@ -24,14 +24,16 @@ class Config(BaseSettings):
 
     @property
     def database_name(self) -> str:
-        """Get appropriate database name based on environment"""
         if self.ENVIRONMENT == 'local':
-            return f"{self.DATABASE_NAME}_test"
+            return "test_db"
+        if self.DATABASE_NAME is None:
+            raise ValueError("DATABASE_NAME must be set in prod environment")
         return self.DATABASE_NAME
 
     @property
     def table_name(self) -> str:
-        """Get appropriate table name based on environment"""
         if self.ENVIRONMENT == 'local':
-            return f"{self.TABLE_NAME}_test"
+            return "test_table"
+        if self.TABLE_NAME is None:
+            raise ValueError("TABLE_NAME must be set in prod environment")
         return self.TABLE_NAME

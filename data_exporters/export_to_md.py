@@ -1,5 +1,6 @@
 from scripts.config import Config
 import pyarrow as pa 
+import os
 from scripts.db_operations import DuckDBDataIngestor
 if 'data_exporter' not in globals():
     from mage_ai.data_preparation.decorators import data_exporter
@@ -12,6 +13,16 @@ def export_data(df, *args, **kwargs):
     Export data to MotherDuck
     """
     settings = Config()
+
+    # Log what mode we're running in
+    print(f"Running in environment: {settings.ENVIRONMENT}")
+    print(f"Using database: {settings.database_name}")
+    print(f"Using table: {settings.table_name}")
+
+    # Log what would happen for GitHub Actions test mode
+    if os.environ.get("GITHUB_ACTIONS_TEST") == "true":
+        print(f"GITHUB_ACTIONS_TEST mode: Would export {len(df)} rows to {settings.database_name}.{settings.table_name}")
+        return
     
 
     pyarrow_schema = pa.schema([
@@ -33,7 +44,7 @@ def export_data(df, *args, **kwargs):
         pa.field("channel_type", pa.string()),
         pa.field("start_date", pa.date32()),  
         pa.field("end_date", pa.date32()),          
-        pa.field("year", pa.int16()),           
+        pa.field("data_year", pa.int16()),           
         pa.field("week_number", pa.int8()),
         pa.field("rank_within_week", pa.int64()) 
     ])
@@ -58,7 +69,7 @@ def export_data(df, *args, **kwargs):
         channel_type STRING, 
         start_date DATE, 
         end_date DATE, 
-        year INT16, 
+        data_year INT16, 
         week_number INT8,
         rank_within_week BIGINT)
     """

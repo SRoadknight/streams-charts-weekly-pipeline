@@ -14,5 +14,4 @@ result = con.execute(f"SELECT * FROM {settings.table_name} LIMIT 5").fetchdf()
 print(result)
 
 con.close()
- 
 

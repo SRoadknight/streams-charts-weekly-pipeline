@@ -170,3 +170,6 @@ __pycache__/
 metadata.yaml 
 .ssh_tunnel/
 aws_emr.json
+
+# Local DubkDB
+test_db

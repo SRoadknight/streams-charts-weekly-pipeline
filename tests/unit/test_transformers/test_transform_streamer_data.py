@@ -14,7 +14,7 @@ def test_transform_adds_correct_dates(sample_data):
     
     assert result['start_date'].iloc[0].date() == expected_start
     assert result['end_date'].iloc[0].date() == expected_end
-    assert result['year'].iloc[0] == 2024
+    assert result['data_year'].iloc[0] == 2024
     assert result['week_number'].iloc[0] == 49
 
 @freeze_time("2025-01-06")  # Testing year boundary
