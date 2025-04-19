@@ -10,8 +10,7 @@ class Config(BaseSettings):
     )
 
     # Environment settings
-    ENVIRONMENT: Literal['local', 'prod'] = 'local'
-    DESTINATION: Literal['md', 'local'] = 'local' if ENVIRONMENT == 'local' else 'md'
+    ENVIRONMENT: Literal['local', 'test', 'prod'] = 'local'
     
     # Database settings
     DATABASE_NAME: Optional[str] = None
@@ -24,7 +23,7 @@ class Config(BaseSettings):
 
     @property
     def database_name(self) -> str:
-        if self.ENVIRONMENT == 'local':
+        if self.ENVIRONMENT in ('local', 'test'):
             return "test_db"
         if self.DATABASE_NAME is None:
             raise ValueError("DATABASE_NAME must be set in prod environment")
@@ -32,7 +31,7 @@ class Config(BaseSettings):
 
     @property
     def table_name(self) -> str:
-        if self.ENVIRONMENT == 'local':
+        if self.ENVIRONMENT in ('local', 'test'):
             return "test_table"
         if self.TABLE_NAME is None:
             raise ValueError("TABLE_NAME must be set in prod environment")

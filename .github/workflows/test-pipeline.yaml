@@ -26,9 +26,9 @@ jobs:
       - name: Run pipeline in test mode
         run: python -m mage_ai.cli.main run . weekly_streamer_stats
         env:
-          ENVIRONMENT: 'local'
-          GITHUB_ACTIONS_TEST: 'true'
+          ENVIRONMENT: 'test'
           STREAMS_CHARTS_CLIENT_ID: ${{ secrets.STREAMS_CHARTS_CLIENT_ID }}
           STREAMS_CHARTS_TOKEN: ${{ secrets.STREAMS_CHARTS_TOKEN }}
+          MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
           DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
           TABLE_NAME: ${{ secrets.TABLE_NAME }}

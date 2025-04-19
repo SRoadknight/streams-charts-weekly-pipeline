@@ -9,21 +9,19 @@ class DuckDBDataIngestor:
         pyarrow_schema: pa.Schema,
         database_name: str,
         table_name: str,
-        destination: str = "local"
+        environment: str = "local"
     ):
         self.duckdb_schema = duckdb_schema
         self.pyarrow_schema = pyarrow_schema
         self.database_name = database_name
         self.table_name = table_name
-        self.destination = destination
-        self.conn = self.initialise_connection(destination)
+        self.environment = environment
+        self.conn = self.initialise_connection(environment)
 
-    def initialise_connection(self, destination):
+    def initialise_connection(self, environment):
         """Initialise database connection."""
-        if os.environ.get("GITHUB_ACTIONS_TEST") == "true":
-            return duckdb.connect(database=":memory:")
 
-        if destination == "md":
+        if environment in ("test", "prod"):
             if not os.environ.get("MOTHERDUCK_TOKEN"):
                 raise ValueError("MotherDuck token not found")
             conn = duckdb.connect(database='md:')

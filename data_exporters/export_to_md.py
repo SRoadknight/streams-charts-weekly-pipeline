@@ -1,7 +1,7 @@
 from scripts.config import Config
 import pyarrow as pa 
-import os
 from scripts.db_operations import DuckDBDataIngestor
+from scripts.test_utils import get_test_table_name 
 if 'data_exporter' not in globals():
     from mage_ai.data_preparation.decorators import data_exporter
 
@@ -13,16 +13,14 @@ def export_data(df, *args, **kwargs):
     Export data to MotherDuck
     """
     settings = Config()
+    table_name = get_test_table_name(settings.table_name)
 
     # Log what mode we're running in
     print(f"Running in environment: {settings.ENVIRONMENT}")
     print(f"Using database: {settings.database_name}")
-    print(f"Using table: {settings.table_name}")
+    print(f"Using table: {table_name}")
 
-    # Log what would happen for GitHub Actions test mode
-    if os.environ.get("GITHUB_ACTIONS_TEST") == "true":
-        print(f"GITHUB_ACTIONS_TEST mode: Would export {len(df)} rows to {settings.database_name}.{settings.table_name}")
-        return
+   
     
 
     pyarrow_schema = pa.schema([
@@ -49,8 +47,8 @@ def export_data(df, *args, **kwargs):
         pa.field("rank_within_week", pa.int64()) 
     ])
     
-    duckdb_schema = f"""
-    CREATE TABLE IF NOT EXISTS {settings.table_name} (
+    duckdb_schema_for_run = f"""
+    CREATE TABLE IF NOT EXISTS {table_name} (
         platform STRING, 
         channel_name STRING, 
         channel_display_name STRING, 
@@ -73,21 +71,32 @@ def export_data(df, *args, **kwargs):
         week_number INT8,
         rank_within_week BIGINT)
     """
+    
+
 
     loader = DuckDBDataIngestor(
-        duckdb_schema=duckdb_schema,
+        duckdb_schema=duckdb_schema_for_run,
         pyarrow_schema=pyarrow_schema,
         database_name=settings.database_name,
-        table_name=settings.table_name,
-        destination=settings.DESTINATION
+        table_name=table_name,
+        environment=settings.ENVIRONMENT
     )
 
     try:
         loader.setup_schema()
         arrow_table = pa.Table.from_pandas(df, schema=pyarrow_schema)
         loader.insert_data(arrow_table)
+        print(f"Inserted {len(df)} rows into {table_name}")
     except Exception as e:
         raise RuntimeError("Failed to insert data: Database error")
+    finally:
+        if settings.ENVIRONMENT == "test":
+            try:
+                loader.conn.execute(f"DROP TABLE IF EXISTS {table_name}")
+                print(f"Test table {table_name} dropped after test run.")
+            except Exception as cleanup_error:
+                print(f"Failed to drop test table {table_name}: {cleanup_error}")
+        loader.close()
 
     
 
