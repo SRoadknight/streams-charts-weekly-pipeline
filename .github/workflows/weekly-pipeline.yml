@@ -26,7 +26,7 @@ jobs:
           poetry install --no-interaction --no-ansi
 
       - name: Run pipeline in production mode
-        run: python -m mage_ai.cli.main run streams-charts-weekly-pipeline weekly_streamer_stats
+        run: python -m mage_ai.cli.main run . weekly_streamer_stats
         env:
           ENVIRONMENT: 'prod'
           STREAMS_CHARTS_CLIENT_ID: ${{ secrets.STREAMS_CHARTS_CLIENT_ID }}

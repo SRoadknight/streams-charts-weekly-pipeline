@@ -24,7 +24,7 @@ jobs:
           poetry install --no-interaction --no-ansi
       
       - name: Run pipeline in test mode
-        run: python -m mage_ai.cli.main run streams-charts-weekly-pipeline weekly_streamer_stats
+        run: python -m mage_ai.cli.main run . weekly_streamer_stats
         env:
           ENVIRONMENT: 'local'
           GITHUB_ACTIONS_TEST: 'true'
